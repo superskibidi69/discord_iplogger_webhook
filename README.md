@@ -8,4 +8,4 @@ I take no responsibility for any misuse or unauthorized actions taken by individ
 
 Please use this concept responsibly and ethically, and respect the rights and privacy of others.
 
-dont be a douch, :)
+# dont be a douch, :)
