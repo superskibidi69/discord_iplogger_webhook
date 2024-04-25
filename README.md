@@ -1,4 +1,4 @@
-# discord_iplogger_webhook by J
+# discord_iplogger_webhook by Jox
 
 As the developer of this tool, it is important to emphasize responsible and ethical use. This proof of concept is intended for educational purposes and to showcase the functionality of Discord webhooks.
 
